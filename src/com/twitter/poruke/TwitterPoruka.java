@@ -77,6 +77,6 @@ public class TwitterPoruka {
 	 */
 	public String toString(){
 		
-		return "KORISNIK:"+korisnik+" VREME:"+vreme.getTime()+" PORUKA:"+poruka;
+		return "KORISNIK:"+korisnik+" PORUKA:"+poruka;
 	}
 }
