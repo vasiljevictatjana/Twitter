@@ -1,4 +1,4 @@
-package testTwitter;
+package testTwitterPoruka;
 
 import com.twitter.poruke.TwitterPoruka;
 
