@@ -53,10 +53,11 @@ public class TestTwitter {
 	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	public void testUnesiKorisnika() {
-		newt.unesi("Marica", "Nova poruka.");	
-		
+	public void testUnesiKorisnikaPoruku() {
+		newt.unesi("Marica", "Nova poruka 1.");	
+			
 		assertEquals("Marica", newt.vratiSvePoruke().getLast().getKorisnik());
+		assertEquals("Nova poruka 1.", newt.vratiSvePoruke().getFirst().getPoruka());
 		
 		
 	}
@@ -65,13 +66,17 @@ public class TestTwitter {
 	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	public void testUnesiPoruku() {
-		newt.unesi("Marica", "Nova poruka.");	
+	public void testUnesiKorisnikaPorukuPrazno() {
+		newt.unesi("Marica", "Nova poruka 1.");	
+
 		
-		assertEquals("Nova poruka.", newt.vratiSvePoruke().getLast().getPoruka());
+		assertEquals("Marica", newt.vratiSvePoruke().getLast().getKorisnik());
+		assertEquals(false, newt.vratiSvePoruke().isEmpty());
+		assertEquals("Nova poruka 1.", newt.vratiSvePoruke().getFirst().getPoruka());
 		
 		
 	}
+
 
 	/**
 	 * Test method for {@link com.twitter.Twitter#vratiPoruke(int, java.lang.String)}.
@@ -79,7 +84,7 @@ public class TestTwitter {
 	@Test(expected = java.lang.RuntimeException.class)
 	public void testVratiPorukeNull() {
 		
-		assertEquals(1, null);
+		newt.vratiPoruke(1, null);
 		
 		
 	}
@@ -91,9 +96,8 @@ public class TestTwitter {
 	@Test(expected = java.lang.RuntimeException.class)
 	public void testVratiPorukeEmpty() {
 		
-		assertEquals(1, "");
-		
-		
+		newt.vratiPoruke(1, "");
 	}
+
 
 }
